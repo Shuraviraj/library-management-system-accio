@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentDto {
+    String regNumber;
     int rollNumber;
     String name;
     int age;

@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.model;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,6 +44,6 @@ public class StudentEntity {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @OneToOne(mappedBy = "student")
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     LibraryCardEntity libraryCard;
 }

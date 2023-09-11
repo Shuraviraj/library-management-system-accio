@@ -5,6 +5,8 @@ import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
 import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +14,19 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudentService {
     @Autowired
     StudentRepository studentRepository;
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    LibraryCardService libraryCardService;
+
 
     public StudentDto addStudent(StudentInput student) {
-        var studentEntity = studentMapper.addUuid(student);
+        var libraryCard = libraryCardService.createLibraryCard();
+        var studentEntity = studentMapper.createStudentEntity(student, libraryCard);
         var savedStudent = studentRepository.save(studentEntity);
         return studentMapper.mapToStudentDto(savedStudent);
     }

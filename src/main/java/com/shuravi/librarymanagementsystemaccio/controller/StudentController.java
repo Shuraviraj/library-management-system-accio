@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.controller;
 
-import com.shuravi.librarymanagementsystemaccio.model.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,15 @@ public class StudentController {
     @GetMapping("/get-by-roll")
     public ResponseEntity getStudentByRoll(@RequestParam("rollNo") int roll) {
         List<StudentDto> response = studentService.getStudentByRoll(roll);
+        if (response == null) {
+            return new ResponseEntity("Invalid Roll Number", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(response, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/get-student-entity-by-roll")
+    public ResponseEntity getStudentEntityByRoll(@RequestParam("rollNo") int roll) {
+        List<StudentEntity> response = studentService.getStudentEntityByRoll(roll);
         if (response == null) {
             return new ResponseEntity("Invalid Roll Number", HttpStatus.BAD_REQUEST);
         }

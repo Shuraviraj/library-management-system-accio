@@ -1,4 +1,4 @@
-package com.shuravi.librarymanagementsystemaccio.model;
+package com.shuravi.librarymanagementsystemaccio.dto;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import lombok.AccessLevel;

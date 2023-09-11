@@ -1,11 +1,12 @@
 package com.shuravi.librarymanagementsystemaccio.model;
 
-import com.shuravi.librarymanagementsystemaccio.enums.Gender;
+import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -14,6 +15,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.sql.Date;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -21,28 +25,24 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @Entity
-@Table(name = "student")
-public class StudentEntity {
+@Table(name = "library_card")
+public class LibraryCardEntity {
     @Id
     @Column(name = "id")
-    String regNumber;
+    String id;
 
-    @Column(name = "roll_number")
-    int rollNumber;
+    @Column(name = "card_number")
+    String cardNo;
 
-    @Column(name = "student_name")
-    String name;
-
-    @Column(name = "student_age")
-    int age;
-
-    @Column(name = "student_email")
-    String email;
-
-    @Column(name = "student_gender")
     @Enumerated(EnumType.STRING)
-    Gender gender;
+    @Column(name = "card_status")
+    CardStatus cardStatus;
 
-    @OneToOne(mappedBy = "student")
-    LibraryCardEntity libraryCard;
+    @CreatedDate
+    @Column(name = "issue_date")
+    Date issueDate;
+
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    StudentEntity student;
 }

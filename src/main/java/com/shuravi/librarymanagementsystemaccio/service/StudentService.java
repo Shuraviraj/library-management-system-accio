@@ -1,7 +1,8 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
+import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
-import com.shuravi.librarymanagementsystemaccio.model.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,10 @@ public class StudentService {
 
     public StudentDto getStudentById(String id) {
         var student = studentRepository.findById(UUID.fromString(id));
-        if (student.isPresent()) {
-            return studentMapper.mapToStudentDto(student.get());
-        }
-        return null;
+        return student.map(studentEntity -> studentMapper.mapToStudentDto(studentEntity)).orElse(null);
+    }
+
+    public List<StudentEntity> getStudentEntityByRoll(int roll) {
+        return studentRepository.findByrollNumber(roll);
     }
 }

@@ -13,9 +13,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 public class StudentDto {
     String regNumber;
-    int rollNumber;
+    Integer rollNumber;
     String name;
-    int age;
+    Integer age;
     String email;
     Gender gender;
     LibraryCardDto libraryCardDto;

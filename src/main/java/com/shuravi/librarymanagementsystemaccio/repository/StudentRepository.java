@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
-public interface StudentRepository extends JpaRepository<StudentEntity, UUID> {
+public interface StudentRepository extends JpaRepository<StudentEntity, String> {
     @Query("select s from StudentEntity s where s.rollNumber = ?1")
-    List<StudentEntity> findByrollNumber(int roll);
+    List<StudentEntity> findByRollNumber(int roll);
+
+    @Query("select s from StudentEntity s where s.gender = 'MALE'")
+    List<StudentEntity> findByGenderIsMale();
 }

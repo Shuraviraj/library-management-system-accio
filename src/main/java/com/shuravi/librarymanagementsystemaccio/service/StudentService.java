@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -31,14 +30,43 @@ public class StudentService {
         var savedStudent = studentRepository.save(studentEntity);
         return studentMapper.mapToStudentDto(savedStudent);
     }
-    
+
     public List<StudentDto> getStudentByRoll(int roll) {
-        var studentEntities = studentRepository.findByrollNumber(roll);
+        var studentEntities = studentRepository.findByRollNumber(roll);
         return studentEntities.stream().map(s -> studentMapper.mapToStudentDto(s)).toList();
     }
 
     public StudentDto getStudentById(String id) {
-        var student = studentRepository.findById(UUID.fromString(id));
+        var student = studentRepository.findById(id);
         return student.map(studentEntity -> studentMapper.mapToStudentDto(studentEntity)).orElse(null);
+    }
+
+    public StudentDto deleteStudentById(String id) {
+        var studentEntity = studentRepository.findById(id);
+        if (studentEntity.isPresent()) {
+            studentRepository.deleteById(id);
+            return studentMapper.mapToStudentDto(studentEntity.get());
+        }
+        return null;
+    }
+
+    public StudentDto updateAgeStudentById(String id, Integer newAge) {
+        var studentEntity = studentRepository.findById(id);
+        if (studentEntity.isPresent()) {
+            var updatedStudentEntity = studentMapper.mapNewAge(studentEntity.get(), newAge);
+            return studentMapper.mapToStudentDto(studentRepository.save(updatedStudentEntity));
+        }
+
+        return null;
+    }
+
+    public List<StudentDto> getStudents() {
+        var students = studentRepository.findAll();
+        return students.stream().map(studentMapper::mapToStudentDto).toList();
+    }
+
+    public List<StudentDto> getMaleStudents() {
+        var students = studentRepository.findByGenderIsMale();
+        return students.stream().map(studentMapper::mapToStudentDto).toList();
     }
 }

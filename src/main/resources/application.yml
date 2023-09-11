@@ -9,6 +9,6 @@ spring:
       ddl-auto: update
   application:
     name: accio-library-management-system
-    
+
 server:
   port: 6060

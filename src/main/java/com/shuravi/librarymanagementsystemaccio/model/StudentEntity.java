@@ -20,16 +20,16 @@ public class StudentEntity {
     @Column(name = "roll_number")
     int rollNumber;
 
-    @Column(name = "student_name")
+    @Column(name = "student_name", nullable = false)
     String name;
 
-    @Column(name = "student_age")
+    @Column(name = "student_age", nullable = false)
     int age;
 
-    @Column(name = "student_email")
+    @Column(name = "student_email", nullable = false, unique = true)
     String email;
 
-    @Column(name = "student_gender")
+    @Column(name = "student_gender", nullable = false)
     @Enumerated(EnumType.STRING)
     Gender gender;
 

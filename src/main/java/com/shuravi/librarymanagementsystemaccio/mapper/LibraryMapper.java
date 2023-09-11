@@ -15,10 +15,12 @@ public abstract class LibraryMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "issueDate", ignore = true)
+//    @Mapping(target = "issueDate", expression = "java(getCurrentDate())")
     @Mapping(target = "cardNo", expression = "java(UUID.randomUUID().toString())")
     @Mapping(target = "cardStatus", expression = "java(CardStatus.ACTIVE)")
     @Mapping(target = "student", source = "studentEntity")
     public abstract LibraryCardEntity createLibraryCardEntity(StudentEntity studentEntity);
-    
+
     public abstract LibraryCardDto mapToDto(LibraryCardEntity entity);
+
 }

@@ -20,7 +20,8 @@ public class LibraryCardService {
 
     @Transactional
     public LibraryCardEntity createLibraryCard(StudentEntity studentEntity) {
-        var libraryEntity = libraryMapper.createLibraryCardEntity(studentEntity);
-        return libraryCardRepoSitory.save(libraryEntity);
+        return libraryMapper.createLibraryCardEntity(studentEntity);
+//        var libraryEntity = libraryMapper.createLibraryCardEntity(studentEntity);
+//        return libraryCardRepoSitory.save(libraryEntity);
     }
 }

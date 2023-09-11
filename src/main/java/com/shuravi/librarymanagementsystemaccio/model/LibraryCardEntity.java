@@ -1,23 +1,10 @@
 package com.shuravi.librarymanagementsystemaccio.model;
 
 import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 
@@ -41,7 +28,7 @@ public class LibraryCardEntity {
     @Column(name = "card_status")
     CardStatus cardStatus;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "issue_date")
     Date issueDate;
 

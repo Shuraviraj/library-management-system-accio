@@ -1,9 +1,10 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
-import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
 import com.shuravi.librarymanagementsystemaccio.mapper.LibraryMapper;
 import com.shuravi.librarymanagementsystemaccio.model.LibraryCardEntity;
+import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.LibraryCardRepository;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ public class LibraryCardService {
     @Autowired
     LibraryMapper libraryMapper;
 
-    public LibraryCardEntity createLibraryCard() {
-        return libraryMapper.createLibraryCardEntity(CardStatus.ACTIVE);
+    @Transactional
+    public LibraryCardEntity createLibraryCard(StudentEntity studentEntity) {
+        var libraryEntity = libraryMapper.createLibraryCardEntity(studentEntity);
+        return libraryCardRepoSitory.save(libraryEntity);
     }
 }

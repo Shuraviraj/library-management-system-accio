@@ -3,8 +3,8 @@ package com.shuravi.librarymanagementsystemaccio.service;
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
 import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
-import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,15 @@ public class StudentService {
     @Autowired
     LibraryCardService libraryCardService;
 
-
+    @Transactional
     public StudentDto addStudent(StudentInput student) {
-        var libraryCard = libraryCardService.createLibraryCard();
         var studentEntity = studentMapper.createStudentEntity(student);
+        var libraryCard = libraryCardService.createLibraryCard(studentEntity);
         studentEntity.setLibraryCard(libraryCard);
         var savedStudent = studentRepository.save(studentEntity);
         return studentMapper.mapToStudentDto(savedStudent);
     }
-
+    
     public List<StudentDto> getStudentByRoll(int roll) {
         var studentEntities = studentRepository.findByrollNumber(roll);
         return studentEntities.stream().map(s -> studentMapper.mapToStudentDto(s)).toList();
@@ -40,9 +40,5 @@ public class StudentService {
     public StudentDto getStudentById(String id) {
         var student = studentRepository.findById(UUID.fromString(id));
         return student.map(studentEntity -> studentMapper.mapToStudentDto(studentEntity)).orElse(null);
-    }
-
-    public List<StudentEntity> getStudentEntityByRoll(int roll) {
-        return studentRepository.findByrollNumber(roll);
     }
 }

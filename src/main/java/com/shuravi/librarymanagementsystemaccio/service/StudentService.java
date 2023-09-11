@@ -26,8 +26,8 @@ public class StudentService {
 
     public StudentDto addStudent(StudentInput student) {
         var libraryCard = libraryCardService.createLibraryCard();
-        var studentEntity = studentMapper.createStudentEntity(student, libraryCard);
-        libraryCard.setStudent(studentEntity);
+        var studentEntity = studentMapper.createStudentEntity(student);
+        studentEntity.setLibraryCard(libraryCard);
         var savedStudent = studentRepository.save(studentEntity);
         return studentMapper.mapToStudentDto(savedStudent);
     }

@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.controller;
 
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class StudentController {
     StudentService studentService;
 
     @PostMapping("/add")
-    public ResponseEntity addStudent(@RequestBody StudentDto student) {
+    public ResponseEntity addStudent(@RequestBody StudentInput student) {
         StudentDto response = studentService.addStudent(student);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }

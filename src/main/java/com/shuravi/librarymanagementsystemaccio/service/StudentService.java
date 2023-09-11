@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
 import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
@@ -17,7 +18,7 @@ public class StudentService {
     @Autowired
     StudentMapper studentMapper;
 
-    public StudentDto addStudent(StudentDto student) {
+    public StudentDto addStudent(StudentInput student) {
         var studentEntity = studentMapper.addUuid(student);
         var savedStudent = studentRepository.save(studentEntity);
         return studentMapper.mapToStudentDto(savedStudent);

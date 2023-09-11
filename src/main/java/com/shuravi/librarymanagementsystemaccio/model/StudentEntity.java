@@ -1,5 +1,6 @@
-package com.shuravi.librarymanagementsystemaccio;
+package com.shuravi.librarymanagementsystemaccio.model;
 
+import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

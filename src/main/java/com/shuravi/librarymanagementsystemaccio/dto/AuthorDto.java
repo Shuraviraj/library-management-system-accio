@@ -1,7 +1,6 @@
 package com.shuravi.librarymanagementsystemaccio.dto;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
-import com.shuravi.librarymanagementsystemaccio.model.BookEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +24,5 @@ public class AuthorDto {
     String email;
     Date lastActivity;
     Gender gender;
-    List<BookEntity> books = new LinkedList<>();
+    List<BookDto> books = new LinkedList<>();
 }

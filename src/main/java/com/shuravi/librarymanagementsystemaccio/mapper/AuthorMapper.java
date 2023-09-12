@@ -6,7 +6,7 @@ import com.shuravi.librarymanagementsystemaccio.model.AuthorEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = BookMapper.class)
 public abstract class AuthorMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "lastActivity", ignore = true)

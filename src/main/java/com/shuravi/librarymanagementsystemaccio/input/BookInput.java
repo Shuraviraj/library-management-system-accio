@@ -1,4 +1,4 @@
-package com.shuravi.librarymanagementsystemaccio.dto;
+package com.shuravi.librarymanagementsystemaccio.input;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Genre;
 import lombok.AccessLevel;
@@ -8,16 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class BookDto {
-    Long id;
+public class BookInput {
     String title;
     Integer noOfPages;
     Genre genre;
     Double cost;
-    AuthorDto author;
 }

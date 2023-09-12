@@ -1,9 +1,8 @@
-package com.shuravi.librarymanagementsystemaccio.input;
+package com.shuravi.librarymanagementsystemaccio.dto.input;
 
-import com.shuravi.librarymanagementsystemaccio.enums.Genre;
+import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -12,10 +11,10 @@ import lombok.experimental.FieldDefaults;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class BookInput {
-    String title;
-    Integer noOfPages;
-    Genre genre;
-    Double cost;
+public class StudentInput {
+    int rollNumber;
+    String name;
+    int age;
+    String email;
+    Gender gender;
 }

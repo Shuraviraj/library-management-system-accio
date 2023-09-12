@@ -1,8 +1,8 @@
 package com.shuravi.librarymanagementsystemaccio.mapper;
 
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
-import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
-import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
+import com.shuravi.librarymanagementsystemaccio.dto.input.StudentInput;
+import com.shuravi.librarymanagementsystemaccio.entity.StudentEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

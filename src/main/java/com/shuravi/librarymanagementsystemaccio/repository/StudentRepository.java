@@ -1,7 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.repository;
 
+import com.shuravi.librarymanagementsystemaccio.entity.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
-import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

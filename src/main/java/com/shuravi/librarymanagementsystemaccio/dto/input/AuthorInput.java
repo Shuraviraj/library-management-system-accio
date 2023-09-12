@@ -1,20 +1,19 @@
-package com.shuravi.librarymanagementsystemaccio.input;
+package com.shuravi.librarymanagementsystemaccio.dto.input;
+
 
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentInput {
-    int rollNumber;
+@Builder
+public class AuthorInput {
     String name;
-    int age;
+    Integer age;
     String email;
     Gender gender;
 }

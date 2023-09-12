@@ -1,9 +1,9 @@
 package com.shuravi.librarymanagementsystemaccio.mapper;
 
 import com.shuravi.librarymanagementsystemaccio.dto.BookDto;
-import com.shuravi.librarymanagementsystemaccio.input.BookInput;
-import com.shuravi.librarymanagementsystemaccio.model.AuthorEntity;
-import com.shuravi.librarymanagementsystemaccio.model.BookEntity;
+import com.shuravi.librarymanagementsystemaccio.dto.input.BookInput;
+import com.shuravi.librarymanagementsystemaccio.entity.AuthorEntity;
+import com.shuravi.librarymanagementsystemaccio.entity.BookEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

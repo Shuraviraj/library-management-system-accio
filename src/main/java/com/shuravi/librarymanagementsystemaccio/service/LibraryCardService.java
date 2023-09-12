@@ -1,8 +1,8 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
+import com.shuravi.librarymanagementsystemaccio.entity.LibraryCardEntity;
+import com.shuravi.librarymanagementsystemaccio.entity.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.mapper.LibraryMapper;
-import com.shuravi.librarymanagementsystemaccio.model.LibraryCardEntity;
-import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.repository.LibraryCardRepository;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;

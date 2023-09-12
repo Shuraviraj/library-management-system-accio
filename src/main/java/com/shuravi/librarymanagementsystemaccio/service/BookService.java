@@ -1,8 +1,8 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
 import com.shuravi.librarymanagementsystemaccio.dto.BookDto;
+import com.shuravi.librarymanagementsystemaccio.dto.input.BookInput;
 import com.shuravi.librarymanagementsystemaccio.exception.AuthorNotFoundException;
-import com.shuravi.librarymanagementsystemaccio.input.BookInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.BookMapper;
 import com.shuravi.librarymanagementsystemaccio.repository.AuthorRepository;
 import com.shuravi.librarymanagementsystemaccio.repository.BookRepository;
@@ -21,8 +21,8 @@ public class BookService {
     @Autowired
     BookMapper mapper;
 
-    public BookDto addBook(BookInput input, Long authorId) {
-        var authorEntityOptional = authorRepository.findById(authorId);
+    public BookDto addBook(BookInput input) {
+        var authorEntityOptional = authorRepository.findById(input.getAuthorId());
         if (authorEntityOptional.isEmpty()) {
             throw new AuthorNotFoundException("Invalid Author Id");
         }

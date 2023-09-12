@@ -1,6 +1,7 @@
-package com.shuravi.librarymanagementsystemaccio.model;
+package com.shuravi.librarymanagementsystemaccio.entity;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Genre;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -46,5 +51,11 @@ public class BookEntity {
     @ManyToOne
     @JoinColumn(name = "author_id")
     AuthorEntity author;
+
+    @Column(name = "issued")
+    Boolean issued;
+
+    @OneToMany(mappedBy = "bookEntity", cascade = CascadeType.ALL)
+    List<TransactionEntity> transactionEntities = new ArrayList<>();
 
 }

@@ -1,8 +1,8 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.dto.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
-import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
 import jakarta.transaction.Transactional;

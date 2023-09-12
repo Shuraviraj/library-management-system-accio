@@ -1,4 +1,4 @@
-package com.shuravi.librarymanagementsystemaccio.model;
+package com.shuravi.librarymanagementsystemaccio.entity;
 
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import jakarta.persistence.CascadeType;

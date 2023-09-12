@@ -1,9 +1,9 @@
 package com.shuravi.librarymanagementsystemaccio.mapper;
 
 import com.shuravi.librarymanagementsystemaccio.dto.LibraryCardDto;
+import com.shuravi.librarymanagementsystemaccio.entity.LibraryCardEntity;
+import com.shuravi.librarymanagementsystemaccio.entity.StudentEntity;
 import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
-import com.shuravi.librarymanagementsystemaccio.model.LibraryCardEntity;
-import com.shuravi.librarymanagementsystemaccio.model.StudentEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

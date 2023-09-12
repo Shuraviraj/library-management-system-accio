@@ -1,6 +1,6 @@
 package com.shuravi.librarymanagementsystemaccio.controller;
 
-import com.shuravi.librarymanagementsystemaccio.input.AuthorInput;
+import com.shuravi.librarymanagementsystemaccio.dto.input.AuthorInput;
 import com.shuravi.librarymanagementsystemaccio.service.AuthorService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

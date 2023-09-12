@@ -1,6 +1,6 @@
-package com.shuravi.librarymanagementsystemaccio.model;
+package com.shuravi.librarymanagementsystemaccio.entity;
 
-import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
+import com.shuravi.librarymanagementsystemaccio.enums.TransactionStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.sql.Date;
+import java.util.Date;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -27,25 +27,29 @@ import java.sql.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "library_card")
-public class LibraryCardEntity {
+@Table(name = "transaction")
+public class TransactionEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "card_number")
-    String cardNo;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "card_status")
-    CardStatus cardStatus;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "transaction_number", nullable = false, unique = true)
+    String transactionNumber;
 
     @CreationTimestamp
-    @Column(name = "issue_date")
-    Date issueDate;
+    @Column(name = "transaction_time")
+    Date transactionTime;
 
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    StudentEntity student;
+    @Enumerated(EnumType.STRING)
+    TransactionStatus transactionStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    BookEntity bookEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "library_card_id")
+    LibraryCardEntity libraryCardEntity;
 }

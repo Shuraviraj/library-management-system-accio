@@ -1,6 +1,6 @@
 package com.shuravi.librarymanagementsystemaccio.repository;
 
-import com.shuravi.librarymanagementsystemaccio.model.AuthorEntity;
+import com.shuravi.librarymanagementsystemaccio.entity.AuthorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

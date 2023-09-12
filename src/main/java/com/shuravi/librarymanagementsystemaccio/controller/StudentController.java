@@ -1,6 +1,6 @@
 package com.shuravi.librarymanagementsystemaccio.controller;
 
-import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
+import com.shuravi.librarymanagementsystemaccio.dto.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

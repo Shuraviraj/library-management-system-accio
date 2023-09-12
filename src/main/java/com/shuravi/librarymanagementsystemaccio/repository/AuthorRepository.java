@@ -1,9 +1,9 @@
 package com.shuravi.librarymanagementsystemaccio.repository;
 
-import com.shuravi.librarymanagementsystemaccio.model.LibraryCardEntity;
+import com.shuravi.librarymanagementsystemaccio.model.AuthorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LibraryCardRepository extends JpaRepository<LibraryCardEntity, Long> {
+public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
 }

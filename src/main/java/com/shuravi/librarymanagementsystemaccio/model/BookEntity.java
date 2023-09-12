@@ -1,15 +1,14 @@
 package com.shuravi.librarymanagementsystemaccio.model;
 
-import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
+import com.shuravi.librarymanagementsystemaccio.enums.Genre;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,35 +16,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.sql.Date;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "library_card")
-public class LibraryCardEntity {
+@Table(name = "book")
+public class BookEntity {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Long id;
 
-    @Column(name = "card_number")
-    String cardNo;
+    @Column(name = "title", nullable = false)
+    String title;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "card_status")
-    CardStatus cardStatus;
+    @Column(name = "no_of_pages", nullable = false)
+    Integer noOfPages;
 
-    @CreationTimestamp
-    @Column(name = "issue_date")
-    Date issueDate;
+    @Enumerated
+    @Column(name = "genre", nullable = false)
+    Genre genre;
 
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    StudentEntity student;
+    @Column(name = "cost", nullable = false)
+    Double cost;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    AuthorEntity author;
+
 }

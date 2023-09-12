@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.service;
 
 import com.shuravi.librarymanagementsystemaccio.dto.StudentDto;
+import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import com.shuravi.librarymanagementsystemaccio.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
@@ -66,7 +67,7 @@ public class StudentService {
     }
 
     public List<StudentDto> getMaleStudents() {
-        var students = studentRepository.findByGenderIsMale();
+        var students = studentRepository.findByGender(Gender.MALE);
         return students.stream().map(studentMapper::mapToStudentDto).toList();
     }
 }

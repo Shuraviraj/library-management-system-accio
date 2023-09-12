@@ -1,6 +1,7 @@
 package com.shuravi.librarymanagementsystemaccio.model;
 
-import com.shuravi.librarymanagementsystemaccio.enums.CardStatus;
+import com.shuravi.librarymanagementsystemaccio.enums.Gender;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,8 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,9 +17,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -27,25 +29,30 @@ import java.sql.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "library_card")
-public class LibraryCardEntity {
+@Table(name = "author")
+public class AuthorEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "card_number")
-    String cardNo;
+    @Column(name = "name", nullable = false)
+    String name;
+
+    @Column(name = "age")
+    Integer age;
+
+    @Column(name = "email", nullable = false, unique = true)
+    String email;
+
+    @UpdateTimestamp
+    @Column(name = "last_activity", nullable = false)
+    Date lastActivity;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "card_status")
-    CardStatus cardStatus;
+    @Column(name = "gender", nullable = false)
+    Gender gender;
 
-    @CreationTimestamp
-    @Column(name = "issue_date")
-    Date issueDate;
-
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    StudentEntity student;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    List<BookEntity> books = new LinkedList<>();
 }

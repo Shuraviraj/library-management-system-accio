@@ -5,6 +5,8 @@ import com.shuravi.librarymanagementsystemaccio.dto.input.StudentInput;
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import com.shuravi.librarymanagementsystemaccio.mapper.StudentMapper;
 import com.shuravi.librarymanagementsystemaccio.repository.StudentRepository;
+import com.shuravi.librarymanagementsystemaccio.transformer.LibraryCardTransformer;
+import com.shuravi.librarymanagementsystemaccio.transformer.StudentTransformer;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -69,5 +71,18 @@ public class StudentService {
     public List<StudentDto> getMaleStudents() {
         var students = studentRepository.findByGender(Gender.MALE);
         return students.stream().map(studentMapper::mapToStudentDto).toList();
+    }
+
+    public StudentDto addStudentSirWay(StudentInput studentInput) {
+        // create object using builder
+        var student = StudentTransformer.StudentInputToStudentEntity(studentInput);
+        var card = LibraryCardTransformer.prepareLibraryCard();
+
+        card.setStudent(student);
+        student.setLibraryCard(card);  // set librarycard for student
+        var savedStudent = studentRepository.save(student); // save both student and library card
+
+        // saved model to response dto
+        return StudentTransformer.StudentEntityToStudentDto(savedStudent);
     }
 }

@@ -3,6 +3,7 @@ package com.shuravi.librarymanagementsystemaccio.dto;
 import com.shuravi.librarymanagementsystemaccio.enums.Gender;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -11,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class StudentDto {
     String regNumber;
     Integer rollNumber;

@@ -14,7 +14,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 public class BookDto {
-    Long id;
     String title;
     Integer noOfPages;
     Genre genre;

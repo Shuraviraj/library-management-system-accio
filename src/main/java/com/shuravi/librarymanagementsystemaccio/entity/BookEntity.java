@@ -4,6 +4,7 @@ import com.shuravi.librarymanagementsystemaccio.enums.Genre;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,7 +42,7 @@ public class BookEntity {
     @Column(name = "no_of_pages", nullable = false)
     Integer noOfPages;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "genre", nullable = false)
     Genre genre;
 
